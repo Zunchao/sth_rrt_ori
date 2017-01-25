@@ -48,8 +48,7 @@ while (dis_end > step_)%iteration<=n_iteration)
     move_direction_2_ = compute_angles_(Q_near_2_,Q_rand_);
     Q_new_2_(1) = Q_near_2_(1) + step_*cos(move_direction_2_);
     Q_new_2_(2) = Q_near_2_(2) + step_*sin(move_direction_2_);
-    
-    
+        
     for i=1:n_obs
         dis_ob_1(j) = sqrt(sum((Q_new_1_(1,:) - P_obstacles(i,:)).^2));
         dis_ob_2(j) = sqrt(sum((Q_new_2_(1,:) - P_obstacles(i,:)).^2));

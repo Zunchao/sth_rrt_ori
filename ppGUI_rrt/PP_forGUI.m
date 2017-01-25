@@ -249,7 +249,6 @@ function popupmenu_algorithms_Callback(hObject, eventdata, handles)
 % hObject    handle to popupmenu_algorithms (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
 % Hints: contents = cellstr(get(hObject,'String')) returns popupmenu_algorithms contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from popupmenu_algorithms
 global algorithm_choosing

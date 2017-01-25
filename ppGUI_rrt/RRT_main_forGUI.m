@@ -1,6 +1,10 @@
 function RRT_main_forGUI(pstart, pgoal, pobstacles, Angle_goal_, num_mov_ob)
-% basic rrt, choose the nearest pont in the tree, and step on
-% search the space
+% path planning when obstacles or goal move
+
+% input: points of start, the goal and all obstacles, 
+%        the moving direction of the goal, 
+%        and the number of moving obsatcles
+
 obstacle_num = size(pobstacles,1);
 Po=2;
 a=0.5;

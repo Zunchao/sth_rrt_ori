@@ -136,6 +136,7 @@ switch algorithm_choosing
             set(handles.edit_display,'String',['planning success!',' And total steps is : ', num2str(step_in_all)])
         end
     case 3
+        %[Q_trees_,D_start_new] = RRT_random(P_start, P_goal, P_obstacles)
         RRT_main_forGUI(P_start, P_goal, P_obstacles, Angle_goal_, num_mov_ob)
         set(handles.edit_display,'String','Planning with RRT!');
 end

@@ -93,14 +93,14 @@ Q_trees_ = [P_start;Q_tree_;P_goal];
 D_start_new = d_start_new+1;
 plot_a_tree(Q_trees_)
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%
 function plot_a_tree(tree)
 for i =1:(size(tree,1)-1)
     qtree_ = [tree(i,:);tree(i+1,:)];
     %plot(qtree_(:,1),qtree_(:,2),'r-');
 end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%
 function [q_trees_, n_start] = find_each_path(qtree_matrics,n,qtree)
 %ni=size(qtree_matrics,2);
 ni=n;
@@ -115,3 +115,8 @@ while ni>1
 end
 n_start = nj-1;
 q_trees_ = q_tree_;
+
+
+
+
+

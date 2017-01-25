@@ -81,21 +81,3 @@ while dis_end > step_
 end
 
 
-%{
-if (isempty(Angle_goal_)==0)
-    pgoal(1) = pgoal(1) + ob_vel/4*cos(Angle_goal_);
-    pgoal(2) = pgoal(2) + ob_vel/4*sin(Angle_goal_);
-    plot(pgoal(1),pgoal(2),'ko')
-end
-
-dir_start_new =  RRT_random(pstart, pgoal, pobstacles);
-pstart_new(1) = pstart(1) + step_*cos(dir_start_new);
-pstart_new(2) = pstart(2) + step_*sin(dir_start_new);
-pstartm=[pstart;pstart_new];
-plot(pstartm(:,1),pstartm(:,2),'k-')
-drawnow
-
-pstart = pstart_new;
-dis_end = sqrt(sum((pstart-pgoal).^2));
-end
-%}

@@ -1,4 +1,12 @@
 function [Q_trees_,D_start_new] = RRT_random(P_start, P_goal, P_obstacles)
+% basic rrt, choose the nearest point in the tree, 
+% build trees from both start and goal simuteneously
+% and step on
+
+% inputs : Points of start, goal and all the obstacles
+% outputs: a path, or 2 trees from the start and the goal
+%         end of the tree from start
+
 Q_init_ = P_start;
 Q_goal_ = P_goal;
 

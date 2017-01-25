@@ -64,8 +64,7 @@ while dis_end > ob_vel
             end
         else
             continue;
-        end
-        
+        end        
         
         pstart = Q_path_(i,:);
         if (isempty(Angle_goal_)==0)

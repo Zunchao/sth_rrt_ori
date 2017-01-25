@@ -1,28 +1,9 @@
 function varargout = PP_forGUI(varargin)
 % PP_FORGUI MATLAB code for PP_forGUI.fig
-%      PP_FORGUI, by itself, creates a new PP_FORGUI or raises the existing
-%      singleton*.
-%
-%      H = PP_FORGUI returns the handle to a new PP_FORGUI or the handle to
-%      the existing singleton*.
-%
-%      PP_FORGUI('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in PP_FORGUI.M with the given input arguments.
-%
-%      PP_FORGUI('Property','Value',...) creates a new PP_FORGUI or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before PP_forGUI_OpeningFcn gets called.  An
-%      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to PP_forGUI_OpeningFcn via varargin.
-%
-%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
-%      instance to run (singleton)".
-%
-% See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help PP_forGUI
+% by Zunchao
 
-% Last Modified by GUIDE v2.5 30-Dec-2016 12:32:56
+% start on Fr, Dez 30 2016 12:14:55
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -274,3 +255,4 @@ function popupmenu_algorithms_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+

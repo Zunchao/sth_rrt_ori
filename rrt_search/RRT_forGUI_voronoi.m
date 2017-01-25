@@ -5,7 +5,7 @@ n_iteration =2000;
 xy_range = 10;
 n_voronoi = 1;
 
-step_ = 0.05;
+step_ = 0.1;
 
 plot(Q_init_(1,1),Q_init_(1,2),'ro')
 axis([0 xy_range 0 xy_range])
@@ -55,5 +55,5 @@ while iteration < n_iteration
     axis([0 xy_range 0 xy_range])
     drawnow
     %pause(0.01)
-    iteration = iteration+1
+    iteration = iteration+1;
 end

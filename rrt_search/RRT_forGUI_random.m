@@ -5,7 +5,7 @@ Q_init_ = [5,5];
 n_iteration = 1000;
 xy_range = 10;
 Q_goal_ = [xy_range,xy_range];
-step_ = 0.05;
+step_ = 0.2;
 iteration = 1;
 
 while (iteration<=n_iteration)
@@ -29,4 +29,4 @@ while (iteration<=n_iteration)
     
     iteration = iteration + 1;
 end
-Q_init_
+Q_init_;

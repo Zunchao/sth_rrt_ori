@@ -3,7 +3,7 @@ function RRT_forGUI_random_with_ob(n_ob_)
 % search the space
 % obstacles are all the shape of circle
 
-n_iteration = 2000;
+n_iteration = 1000;
 xy_range = 10;
 Q_goal_ = [xy_range,xy_range];
 step_ = 0.1;
@@ -50,4 +50,4 @@ while (iteration<=n_iteration)
     end
     iteration = iteration + 1;
 end
-size(Q_init_)
+size(Q_init_);

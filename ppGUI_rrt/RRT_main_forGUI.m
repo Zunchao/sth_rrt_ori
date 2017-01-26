@@ -1,8 +1,8 @@
 function RRT_main_forGUI(pstart, pgoal, pobstacles, Angle_goal_, num_mov_ob)
 % path planning when obstacles or goal move
 
-% input: points of start, the goal and all obstacles,
-%        the moving direction of the goal,
+% input: points of start, the goal and all obstacles, 
+%        the moving direction of the goal, 
 %        and the number of moving obsatcles
 
 obstacle_num = size(pobstacles,1);
@@ -54,6 +54,7 @@ while dis_end > step_
                     dis_path_ob = step_+1;
                 end
             end
+
         else
             flag_avoid = 0;
         end
@@ -72,8 +73,7 @@ while dis_end > step_
             pause(0.1)
         else
             break;
-        end
-        
+        end        
     end
     
     pstart = Q_path_(i+1,:);
@@ -83,6 +83,7 @@ while dis_end > step_
     dis_end = sqrt(sum((pstart-pgoal).^2));
     
 end
+
 
 %{
 if (isempty(Angle_goal_)==0)
@@ -103,3 +104,4 @@ dis_end = sqrt(sum((pstart-pgoal).^2));
 end
 %}
 end
+

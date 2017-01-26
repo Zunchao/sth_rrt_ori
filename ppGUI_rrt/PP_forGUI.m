@@ -1,9 +1,8 @@
 function varargout = PP_forGUI(varargin)
 % PP_FORGUI MATLAB code for PP_forGUI.fig
 
-% by Zunchao
+% by Zunchao 
 % start on Fr, Dez 30 2016 12:14:55
-
 % Begin initialization code - DO NOT EDIT
 
 gui_Singleton = 1;
@@ -118,7 +117,6 @@ function edit_display_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
-
 
 
 function edit_moving_obstacles_number_Callback(hObject, eventdata, handles)

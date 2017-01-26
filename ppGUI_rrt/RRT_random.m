@@ -33,8 +33,8 @@ end
 while (dis_end > step_)%iteration<=n_iteration)
     flag_ob = 1;
     
-    ax = abs(P_start(1,1)-P_goal(1,1));
-    ay = abs(P_start(1,2)-P_goal(1,2));
+    ax = abs(P_start(1,1)-P_goal(1,1))+1;
+    ay = abs(P_start(1,2)-P_goal(1,2))+1;
     
     rax = rand(1)*ax+min([P_start(1,1),P_goal(1,1)]);
     ray = rand(1)*ay+min([P_start(1,2),P_goal(1,2)]);

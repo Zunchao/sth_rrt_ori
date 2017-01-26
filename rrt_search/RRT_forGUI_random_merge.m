@@ -3,7 +3,7 @@ function RRT_forGUI_random_merge()
 % from two starts, two trees until points connected
 % search the space
 Q_init_ = [0,0];
-Q_goal_ = [10,5];
+Q_goal_ = [10,9];
 cla
 n_iteration = 1000;
 xy_range = 10;
@@ -85,7 +85,7 @@ nj=1;
 while ni>1    
     mi= find(qtree_matrics(:,ni)==1);
     qtree_ = [qtree(mi,:);qtree(ni,:)];    
-    %plot(qtree_(:,1),qtree_(:,2),'r-');
+    plot(qtree_(:,1),qtree_(:,2),'r-');
     q_tree_(nj,:) = qtree(ni,:);
     ni=mi;
     nj = nj+1;

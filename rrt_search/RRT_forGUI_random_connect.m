@@ -4,7 +4,7 @@ function RRT_forGUI_random_connect()
 % search the space
 Q_init_ = [0,0];
 
-n_iteration = 10000;
+n_iteration = 1000;
 xy_range = 10;
 Q_goal_ = rand(1,2)*xy_range;
 step_ = 0.2;

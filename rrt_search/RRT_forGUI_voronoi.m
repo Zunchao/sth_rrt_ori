@@ -1,7 +1,7 @@
 function [ b ] = RRT_forGUI_voronoi(  )
 % guide by voronoi, add a new point to the tree, and voronoi the tree
 Q_init_ = [5,5];
-n_iteration =2000;
+n_iteration =500;
 xy_range = 10;
 n_voronoi = 1;
 

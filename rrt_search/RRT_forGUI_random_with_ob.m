@@ -1,11 +1,11 @@
-function RRT_forGUI_random_with_ob(n_ob_)
+function RRT_forGUI_random_with_ob(p_goal, n_ob_)
 % basic rrt, choose the nearest pont in the tree, and step on
 % search the space
 % obstacles are all the shape of circle
 
 n_iteration = 1000;
-xy_range = 10;
-Q_goal_ = [xy_range,xy_range];
+xy_range = (sum(p_goal))/2;
+Q_goal_ = p_goal;
 step_ = 0.2;
 iteration = 1;
 
@@ -13,9 +13,10 @@ n_ob = n_ob_+1;
 obstacle_circle_ = rand(n_ob,2)*xy_range;
 
 Q_init_ = obstacle_circle_(1,:);
-r = 2;
+r = 1.5;
 draw_circle_ob_(obstacle_circle_(2:end,:),r)
 plot(Q_init_(1,1),Q_init_(1,2),'ro')
+
 while (iteration<=n_iteration)
     Q_rand_ = rand(1,2)*xy_range;
     for j = 1:size(Q_init_,1)
@@ -42,9 +43,9 @@ while (iteration<=n_iteration)
         
         Q_init_ = [Q_init_;Q_new_];
         q_newstep_ = [Q_near_;Q_new_];
-        plot(Q_init_(1,1),Q_init_(1,2),'ro',q_newstep_(:,1),q_newstep_(:,2),'-')
-        hold on
-        axis([0 xy_range 0 xy_range])
+        plot(Q_init_(1,1),Q_init_(1,2),'mo',q_newstep_(:,1),q_newstep_(:,2),'-')
+        %hold on
+        %axis([0 xy_range 0 xy_range])
         drawnow
         %pause(0.01)
     end

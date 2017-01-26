@@ -66,14 +66,12 @@ switch algorithm_choosing
     case 2
         cla
         hold on
-        axis([P_start(1,1)-1, P_goal(1,1)+1, P_start(1,2)-1, P_goal(1,2)+1])
         
         disp('run naive rrt ...')
         RRT_forGUI_naive(P_start, P_goal);
     case 3
-        cla
+        cla        
         hold on
-        axis([P_start(1,1)-1, P_goal(1,1)+1, P_start(1,2)-1, P_goal(1,2)+1])
         
         disp('run rrt random ...')
         RRT_forGUI_random(P_start, P_goal)
@@ -81,16 +79,15 @@ switch algorithm_choosing
     case 4
         cla
         hold on
-        axis([P_start(1,1)-1, P_goal(1,1)+1, P_start(1,2)-1, P_goal(1,2)+1])
         
         disp('run rrt by voronoi ...')
         RRT_forGUI_voronoi(P_start, P_goal)
         
     case 5
         cla
-        %plot(P_start(1,1),P_start(1,2),'ro')
+        plot(P_start(1,1),P_start(1,2),'ro')
         hold on
-        %plot(P_goal(1,1)-1.5,P_goal(1,2)-1.5,'ko')
+        plot(P_goal(1,1),P_goal(1,2),'ko')
         axis([P_start(1,1)-1, P_goal(1,1)+1, P_start(1,2)-1, P_goal(1,2)+1])
         
         disp('run rrt connected ...')
@@ -110,21 +107,16 @@ switch algorithm_choosing
         axis([P_start(1,1)-1, P_goal(1,1)+1, P_start(1,2)-1, P_goal(1,2)+1])
         
         disp('run rrt with circular obstacles ...')
-        if ~N_obstacles
-            set(handles.edit_DISPLAY,'String','Please set the num of obstacles > 0 !');
-        else
-            RRT_forGUI_random_with_ob(P_goal, N_obstacles)
-        end
+        RRT_forGUI_random_with_ob(P_goal, N_obstacles)
     case 8
         cla
         hold on
         axis([P_start(1,1)-1, P_goal(1,1)+1, P_start(1,2)-1, P_goal(1,2)+1])
-        disp('run rrt with cube obstacles ...')
+        
         if ~N_obstacles
-            set(handles.edit_DISPLAY,'String','Please set the num of obstacles > 0 !');
-        else
-            RRT_forGUI_random_with_ob_cube(P_start, P_goal, N_obstacles)
-        end
+            set(handles.edit_DISPLAY,'String','Please set the num!');
+        disp('run rrt with cube obstacles ...')
+        RRT_forGUI_random_with_ob_cube(P_start, P_goal, N_obstacles)
 end
 
 % --- Executes on selection change in popupmenu_algorithms.

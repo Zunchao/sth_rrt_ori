@@ -1,14 +1,14 @@
-function RRT_forGUI_random_merge()
+function RRT_forGUI_random_merge(p_start, p_goal)
 % basic rrt, choose the nearest point in the tree, and step on
 % from two starts, two trees until points connected
 % search the space
 
-Q_init_ = [0,0];
-Q_goal_ = [10,10];
+Q_init_ = p_start;
+Q_goal_ = p_goal;
 
 cla
 n_iteration = 1000;
-xy_range = 10;
+xy_range = (sum(p_goal-p_start))/2+1;
 %Q_goal_ = [xy_range,xy_range];
 step_ = 0.1;
 iteration = 1;
@@ -44,10 +44,10 @@ while (iteration<=n_iteration)
     iteration_m = iteration_m+1;
     
     plot(Q_init_(1,1),Q_init_(1,2),'ro',Q_goal_(1,1),Q_goal_(1,2),'ro');
-    hold on
+    %hold on
     plot(q_newstep_1_(:,1),q_newstep_1_(:,2),'+',q_newstep_2_(:,1),q_newstep_2_(:,2),'o')
     
-    axis([0 xy_range 0 xy_range])
+    %axis([0 xy_range 0 xy_range])
     drawnow
     
     iteration = iteration + 1;

@@ -1,11 +1,12 @@
-function RRT_forGUI_naive()
+function RRT_forGUI_naive(p_start, p_goal)
 % naive search , randomly choose a point in the tree, circled chaos
 %
-Q_init_ = [5,5];
+Q_init_ = (p_start+p_goal)/2;
 n_iteration = 1000;
-xy_range = 10;
+xy_range = (sum(p_goal-p_start))/2;
 step_ = 0.2;
 iteration = 1;
+plot(Q_init_(1,1),Q_init_(1,2),'ro')
 
 while (iteration<=n_iteration)
     Q_rand_ = rand(1,2)*xy_range;
@@ -17,8 +18,8 @@ while (iteration<=n_iteration)
     Q_init_ = [Q_init_;Q_new_];
     q_newstep_ = [Q_near_;Q_new_];
     plot(q_newstep_(:,1),q_newstep_(:,2),'.-')
-    hold on
-    axis([0 xy_range 0 xy_range])
+    %hold on
+    %axis([0 xy_range 0 xy_range])
     drawnow
     iteration = iteration + 1;
 end

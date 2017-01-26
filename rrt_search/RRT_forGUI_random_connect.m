@@ -1,12 +1,13 @@
-function RRT_forGUI_random_connect()
+function RRT_forGUI_random_connect(p_start, p_goal)
 % basic rrt, choose the nearest point in the tree, and step on
 % until one goal connected
 % search the space
-Q_init_ = [0,0];
+Q_init_ = p_start;
 
-n_iteration = 1000;
-xy_range = 10;
-Q_goal_ = [8,7];
+n_iteration = 10000;
+xy_range = (sum(p_goal-p_start))/2+1;
+
+Q_goal_ = p_goal-2;
 step_ = 0.2;
 iteration = 1;
 
@@ -25,11 +26,11 @@ while (iteration<=n_iteration)
     Q_init_ = [Q_init_;Q_new_];
     q_newstep_1_ = [Q_near_1_;Q_new_];
     
-    plot(Q_init_(1,1),Q_init_(1,2),'ro',Q_goal_(1,1),Q_goal_(1,2),'ro');
-    hold on
+    plot(Q_init_(1,1),Q_init_(1,2),'ro',Q_goal_(1,1),Q_goal_(1,2),'ko');
+    %hold on
     plot(q_newstep_1_(:,1),q_newstep_1_(:,2),'-')
     
-    axis([0 xy_range 0 xy_range])
+    %axis([0 xy_range 0 xy_range])
     drawnow
     
     iteration = iteration + 1;

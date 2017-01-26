@@ -1,16 +1,16 @@
-function [ b ] = RRT_forGUI_voronoi(  )
+function [ b ] = RRT_forGUI_voronoi(p_start, p_goal)
 % guide by voronoi, add a new point to the tree, and voronoi the tree
-Q_init_ = [5,5];
+Q_init_ = (p_start+p_goal)/2;
 n_iteration =500;
-xy_range = 10;
+xy_range = (sum(p_goal-p_start))/2;
 n_voronoi = 1;
 
 step_ = 0.1;
 
 plot(Q_init_(1,1),Q_init_(1,2),'ro')
-axis([0 xy_range 0 xy_range])
-hold on
+
 iteration = 3;
+
 Q_rand_= rand(2,2)*xy_range;
 plot(Q_rand_(:,1),Q_rand_(:,2),'r+')
 

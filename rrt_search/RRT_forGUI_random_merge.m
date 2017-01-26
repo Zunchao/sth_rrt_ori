@@ -2,8 +2,10 @@ function RRT_forGUI_random_merge()
 % basic rrt, choose the nearest point in the tree, and step on
 % from two starts, two trees until points connected
 % search the space
-Q_init_ = [1,0];
-Q_goal_ = [8,9];
+
+Q_init_ = [0,0];
+Q_goal_ = [10,10];
+
 cla
 n_iteration = 1000;
 xy_range = 10;

@@ -6,7 +6,7 @@ function RRT_forGUI_random_with_ob_cube(n_ob_)
 n_iteration = 1000;
 xy_range = 10;
 Q_goal_ = [xy_range,xy_range];
-step_ = 0.1;
+step_ = 0.2;
 iteration = 1;
 
 obstacle_cube_ = rand(n_ob_,2)*xy_range;

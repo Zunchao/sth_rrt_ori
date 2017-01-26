@@ -1,7 +1,7 @@
 function RRT_forGUI_random()
 % basic rrt, choose the nearest pont in the tree, and step on
 % search the space
-Q_init_ = [5,5];
+Q_init_ = [4,5];
 n_iteration = 1000;
 xy_range = 10;
 Q_goal_ = [xy_range,xy_range];

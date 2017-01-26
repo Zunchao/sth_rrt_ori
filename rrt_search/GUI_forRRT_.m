@@ -23,42 +23,18 @@ end
 
 % --- Executes just before GUI_forRRT_ is made visible.
 function GUI_forRRT__OpeningFcn(hObject, eventdata, handles, varargin)
-% This function has no output args, see OutputFcn.
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to GUI_forRRT_ (see VARARGIN)
-
-% Choose default command line output for GUI_forRRT_
 handles.output = hObject;
-
 % Update handles structure
 guidata(hObject, handles);
 
-% UIWAIT makes GUI_forRRT_ wait for user response (see UIRESUME)
-% uiwait(handles.figure1);
-
-
 % --- Outputs from this function are returned to the command line.
 function varargout = GUI_forRRT__OutputFcn(hObject, eventdata, handles)
-% varargout  cell array for returning output args (see VARARGOUT);
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Get default command line output from handles structure
 varargout{1} = handles.output;
-
 
 % --- Executes on button press in pushbutton_RUN_MAIN.
 function pushbutton_RUN_MAIN_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton_RUN_MAIN (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 global P_start P_goal N_obstacles algorithm_choosing
 N_obstacles = str2double(get(handles.edit_ob,'String'));
-
-
 
 switch algorithm_choosing
     case 1
@@ -153,10 +129,6 @@ end
 
 % --- Executes during object creation, after setting all properties.
 function popupmenu_algorithms_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to popupmenu_algorithms (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
 % Hint: popupmenu controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
@@ -166,20 +138,12 @@ end
 
 
 function edit_START_Callback(hObject, eventdata, handles)
-% hObject    handle to edit_START (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
 % Hints: get(hObject,'String') returns contents of edit_START as text
 %        str2double(get(hObject,'String')) returns contents of edit_START as a double
 
 
 % --- Executes during object creation, after setting all properties.
 function edit_START_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit_START (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
 % Hint: edit controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
@@ -189,20 +153,12 @@ end
 
 
 function edit_GOAL_Callback(hObject, eventdata, handles)
-% hObject    handle to edit_GOAL (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
 % Hints: get(hObject,'String') returns contents of edit_GOAL as text
 %        str2double(get(hObject,'String')) returns contents of edit_GOAL as a double
 
 
 % --- Executes during object creation, after setting all properties.
 function edit_GOAL_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit_GOAL (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
 % Hint: edit controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
@@ -212,20 +168,9 @@ end
 
 
 function edit_ob_Callback(hObject, eventdata, handles)
-% hObject    handle to edit_ob (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit_ob as text
-%        str2double(get(hObject,'String')) returns contents of edit_ob as a double
-
 
 % --- Executes during object creation, after setting all properties.
 function edit_ob_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit_ob (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
 % Hint: edit controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
@@ -235,22 +180,10 @@ end
 
 
 function edit_DISPLAY_Callback(hObject, eventdata, handles)
-% hObject    handle to edit_DISPLAY (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit_DISPLAY as text
-%        str2double(get(hObject,'String')) returns contents of edit_DISPLAY as a double
 
 
 % --- Executes during object creation, after setting all properties.
 function edit_DISPLAY_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit_DISPLAY (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
@@ -274,7 +207,4 @@ set(handles.edit_GOAL,'String',num2str(P_goal));
 
 % --- Executes on button press in pushbutton_CLC.
 function pushbutton_CLC_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton_CLC (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 cla

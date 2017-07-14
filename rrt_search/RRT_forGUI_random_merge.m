@@ -14,6 +14,9 @@ step_ = 0.1;
 iteration = 1;
 iteration_m = 1;
 
+writerObj=VideoWriter('RRT_forGUI_random_merge.avi');  %// 定义一个视频文件用来存动画
+open(writerObj);                    %// 打开该视频文件
+
 while (iteration<=n_iteration)
     Q_rand_ = rand(1,2)*xy_range;
     for j = 1:size(Q_init_,1)
@@ -42,6 +45,9 @@ while (iteration<=n_iteration)
     qtree_matix_2_(m,iteration_m+1) = 1;
     
     iteration_m = iteration_m+1;
+    
+    frame = getframe;            %// 把图像存入视频文件中
+    writeVideo(writerObj,frame); %// 将帧写入视频
     
     plot(Q_init_(1,1),Q_init_(1,2),'ro',Q_goal_(1,1),Q_goal_(1,2),'ro');
     %hold on
@@ -78,15 +84,15 @@ while (iteration<=n_iteration)
     end
 end
 Q_init_;
-
+close(writerObj); %// 关闭视频文件句柄
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [q_trees_, n_start] = find_each_path(qtree_matrics,n,qtree)
 ni=n;
 nj=1;
-while ni>1    
+while ni>1
     mi= find(qtree_matrics(:,ni)==1);
-    qtree_ = [qtree(mi,:);qtree(ni,:)];    
+    qtree_ = [qtree(mi,:);qtree(ni,:)];
     plot(qtree_(:,1),qtree_(:,2),'r-');
     q_tree_(nj,:) = qtree(ni,:);
     ni=mi;

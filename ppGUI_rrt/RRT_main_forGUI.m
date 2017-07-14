@@ -1,8 +1,8 @@
 function RRT_main_forGUI(pstart, pgoal, pobstacles, Angle_goal_, num_mov_ob)
 % path planning when obstacles or goal move
 
-% input: points of start, the goal and all obstacles, 
-%        the moving direction of the goal, 
+% input: points of start, the goal and all obstacles,
+%        the moving direction of the goal,
 %        and the number of moving obsatcles
 
 obstacle_num = size(pobstacles,1);
@@ -27,12 +27,16 @@ dis_path_ob = 1000;
 
 [Q_path_,dir_start_new] =  RRT_random(pstart, pgoal, pobstacles);
 
+writerObj=VideoWriter('pp_rrt_o.avi');  %// 定义一个视频文件用来存动画
+open(writerObj);                    %// 打开该视频文件
+
 while dis_end > step_
     
     for i = 1:dir_start_new-1
         
         flag_avoid=[];
-        
+        frame = getframe;            %// 把图像存入视频文件中
+        writeVideo(writerObj,frame); %// 将帧写入视频
         if num_mov_ob
             for i1=1:num_mov_ob
                 %pobstacles(num+i1-1,1)=pobstacles(num+i1-1,1)+ob_vel*cos(Angle_moving_ob(i1)+pi);
@@ -54,14 +58,14 @@ while dis_end > step_
                     dis_path_ob = step_+1;
                 end
             end
-
+            
         else
             flag_avoid = 0;
         end
         
         %flag_avoid
         if (isempty(Angle_goal_)==0)
-            P_goals = compute_new_without_avoidance(pgoal, Angle_goal_, pobstacles,Po,a, ob_vel/4);
+            P_goals = compute_new_without_avoidance(pgoal, Angle_goal_, pobstacles,Po,a, ob_vel/5);
             pgoal = P_goals ;
             plot(pgoal(1),pgoal(2),'mo');
         end
@@ -73,7 +77,7 @@ while dis_end > step_
             pause(0.1)
         else
             break;
-        end        
+        end
     end
     
     pstart = Q_path_(i+1,:);
@@ -84,7 +88,7 @@ while dis_end > step_
     
 end
 
-
+close(writerObj); %// 关闭视频文件句柄
 %{
 if (isempty(Angle_goal_)==0)
     pgoal(1) = pgoal(1) + ob_vel/4*cos(Angle_goal_);

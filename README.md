@@ -1,5 +1,5 @@
 # sth_rrt_ori
-basic rrt search on  matlab, these codes are created half year ago. 
+basic rrt search on  matlab. 
 
 rrt_search is to show the simple examples in msl.cs.uiuc.edu/rrt/index.html. 
 

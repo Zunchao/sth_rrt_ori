@@ -23,6 +23,9 @@ else
     Angle_moving_ob = 0;
 end
 
+writerObj=VideoWriter('pp_apf_o.avi');  %// 定义一个视频文件用来存动画
+open(writerObj);                    %// 打开该视频文件
+
 %Angle_goal_ = randi([-180,180])*pi/180;
 if isempty(Angle_goal_)
     flag_Movinggoal = 0;
@@ -34,6 +37,10 @@ k=1;
 flag_apf = 0;
 %***************初始化结束，开始主体循环******************
 for j=1:Jnum%循环开始
+    
+    frame = getframe;            %// 把图像存入视频文件中
+    writeVideo(writerObj,frame); %// 将帧写入视频
+    
     Goal(j,:)=P_path(:);%Goal是保存车走过的每个点的坐标。刚开始先将起点放进该向量。
     %调用计算角度模块
     for i1=1:num_mov_ob
@@ -44,7 +51,7 @@ for j=1:Jnum%循环开始
         pointall = [pob; P_goal];
         P_ob = compute_new_without_avoidance(P_obstacles(i1,:), Angle_moving_ob(i1)+pi, pointall,Po,a, ob_vel);
         P_obstacles(i1,:) = P_ob;
-        P_obstaclespath(i1,:,i2) = P_ob;        
+        P_obstaclespath(i1,:,i2) = P_ob;
     end
     i2=i2+1;
     Angle_obstaclePath = compute_angles_(P_path,P_obstacles);%Theta是计算出来的车和障碍，
@@ -89,7 +96,7 @@ for j=1:Jnum%循环开始
         %记录此时的j值
     end%如果不符合if的条件，重新返回循环，继续执行。
     if (flag_Movinggoal)
-       
+        
         pointall = [P_obstacles];
         P_goals = compute_new_without_avoidance(P_goal, Angle_goal_, pointall,Po,a, ob_vel/4);
         P_goal = P_goals ;
@@ -115,7 +122,7 @@ for j=1:Jnum%循环开始
         k=k+1;
     else
         Pgoals=P_goal;
-       
+        
     end
     
     step_in_all=j;
@@ -144,7 +151,7 @@ plot(P_goal(:,1),P_goal(:,2),'g.');
 %set(handles.edit_display,'String',num2str(step_in_all))
 Pgoals_path = Pgoals;
 %P_obstaclespath;
-
+close(writerObj); %// 关闭视频文件句柄
 
 %{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

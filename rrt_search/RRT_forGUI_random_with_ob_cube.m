@@ -1,18 +1,21 @@
-function RRT_forGUI_random_with_ob_cube(n_ob_)
+function RRT_forGUI_random_with_ob_cube(p_start, p_goal, n_ob_)
 % basic rrt, choose the nearest pont in the tree, and step on
 % search the space
 % obstacles are all the shape of cube
 
-n_iteration = 1000;
-xy_range = 10;
-Q_goal_ = [xy_range,xy_range];
+n_iteration = 500;
+xy_range = (sum(p_goal))/2;
+Q_goal_ = p_goal;
 step_ = 0.2;
 iteration = 1;
 
 obstacle_cube_ = rand(n_ob_,2)*xy_range;
 widthHeight_ = randi([step_*100,100],n_ob_,2)/100*xy_range/3;
 
-Q_init_ = [0,0];
+Q_init_ = p_start;
+
+writerObj=VideoWriter('RRT_forGUI_random_with_ob_cube.avi');  %// 定义一个视频文件用来存动画
+open(writerObj);                    %// 打开该视频文件
 
 draw_cube_ob_(obstacle_cube_,widthHeight_);
 
@@ -46,12 +49,16 @@ while (iteration < n_iteration)
         %}
     end
     
-    if (~i_flag_)        
+    if (~i_flag_)
         Q_init_ = [Q_init_;Q_new_];
         q_newstep_ = [Q_near_;Q_new_];
-        plot(Q_init_(1,1),Q_init_(1,2),'ro',q_newstep_(:,1),q_newstep_(:,2),'-')
-        hold on
-        axis([0 xy_range 0 xy_range])
+        
+        frame = getframe;            %// 把图像存入视频文件中
+        writeVideo(writerObj,frame); %// 将帧写入视频
+        
+        plot(Q_init_(1,1),Q_init_(1,2),'mo',q_newstep_(:,1),q_newstep_(:,2),'-')
+        %hold on
+        %axis([0 xy_range 0 xy_range])
         drawnow
         %pause(0.01)
     end
@@ -59,3 +66,4 @@ while (iteration < n_iteration)
 end
 iteration;
 size(Q_init_);
+close(writerObj); %// 关闭视频文件句柄

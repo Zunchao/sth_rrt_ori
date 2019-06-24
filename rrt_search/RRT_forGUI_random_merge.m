@@ -1,18 +1,21 @@
-function RRT_forGUI_random_merge()
+function RRT_forGUI_random_merge(p_start, p_goal)
 % basic rrt, choose the nearest point in the tree, and step on
 % from two starts, two trees until points connected
 % search the space
 
-Q_init_ = [0,0];
-Q_goal_ = [10,10];
+Q_init_ = p_start;
+Q_goal_ = p_goal;
 
 cla
 n_iteration = 1000;
-xy_range = 10;
+xy_range = (sum(p_goal-p_start))/2+1;
 %Q_goal_ = [xy_range,xy_range];
 step_ = 0.1;
 iteration = 1;
 iteration_m = 1;
+
+writerObj=VideoWriter('RRT_forGUI_random_merge.avi');  %// 定义一个视频文件用来存动画
+open(writerObj);                    %// 打开该视频文件
 
 while (iteration<=n_iteration)
     Q_rand_ = rand(1,2)*xy_range;
@@ -43,11 +46,14 @@ while (iteration<=n_iteration)
     
     iteration_m = iteration_m+1;
     
+    frame = getframe;            %// 把图像存入视频文件中
+    writeVideo(writerObj,frame); %// 将帧写入视频
+    
     plot(Q_init_(1,1),Q_init_(1,2),'ro',Q_goal_(1,1),Q_goal_(1,2),'ro');
-    hold on
+    %hold on
     plot(q_newstep_1_(:,1),q_newstep_1_(:,2),'+',q_newstep_2_(:,1),q_newstep_2_(:,2),'o')
     
-    axis([0 xy_range 0 xy_range])
+    %axis([0 xy_range 0 xy_range])
     drawnow
     
     iteration = iteration + 1;
@@ -78,15 +84,15 @@ while (iteration<=n_iteration)
     end
 end
 Q_init_;
-
+close(writerObj); %// 关闭视频文件句柄
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [q_trees_, n_start] = find_each_path(qtree_matrics,n,qtree)
 ni=n;
 nj=1;
-while ni>1    
+while ni>1
     mi= find(qtree_matrics(:,ni)==1);
-    qtree_ = [qtree(mi,:);qtree(ni,:)];    
+    qtree_ = [qtree(mi,:);qtree(ni,:)];
     plot(qtree_(:,1),qtree_(:,2),'r-');
     q_tree_(nj,:) = qtree(ni,:);
     ni=mi;

@@ -33,7 +33,7 @@ end
 
 while (dis_end > step_)%iteration<=n_iteration)
     flag_ob = 1;
-    
+
     ax = abs(P_start(1,1)-P_goal(1,1))+1.5;
     ay = abs(P_start(1,2)-P_goal(1,2))+1.5;
     
